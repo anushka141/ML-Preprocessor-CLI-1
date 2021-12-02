@@ -32,7 +32,7 @@ class FeatureScaling:
     # Performs Normalization on specific column or on whole dataset.
     def normalization(self):
         while(1):
-            print("\nTasks (Normalization)\U0001F447")
+            print("\nTasks")
             for task in self.tasks_normalization:
                 print(task)
 
@@ -40,7 +40,7 @@ class FeatureScaling:
                 try:
                     choice = int(input(("\n\nWhat you want to do? (Press -1 to go back)  ")))
                 except ValueError:
-                    print("Integer Value required. Try again.....\U0001F974")
+                    print("Integer Value required.")
                     continue
                 break
     
@@ -50,7 +50,7 @@ class FeatureScaling:
             # Performs normalization on the columns provided.
             elif choice == 1:
                 print(self.data.dtypes)
-                columns = input("Enter all the column"+ self.bold_start + "(s)" + self.bold_end + "you want to normalize (Press -1 to go back)  ").lower()
+                columns = input("Enter all the column(s) you want to normalize (Press -1 to go back)  ").lower()
                 if columns == "-1":
                     break
                 for column in columns.split(" "):
@@ -60,30 +60,30 @@ class FeatureScaling:
                         maxValue = self.data[column].max()
                         self.data[column] = (self.data[column] - minValue)/(maxValue - minValue)
                     except:
-                        print("\nNot possible....\U0001F636")
+                        print("\nNot possible")
                 print("Done....\U0001F601")
 
             # Performs normalization on whole dataset.
             elif choice == 2:
                 try:
                     self.data = pd.DataFrame(MinMaxScaler().fit_transform(self.data))
-                    print("Done.......\U0001F601")
+                    print("Done")
 
                 except:
-                    print("\nString Columns are present. So, " + self.bold_start + "NOT" + self.bold_end + " possible.\U0001F636\nYou can try the first option though.")
+                    print("\nString Columns are present. So, NOT possible.You can try the first option though.")
                 
             elif choice==3:
                 DataDescription.showDataset(self)
 
             else:
-                print("\nYou pressed the wrong key!! Try again..\U0001F974")
+                print("\nYou pressed the wrong key")
 
         return
 
     # Function to perform standardization on specific column(s) or on whole dataset.
     def standardization(self):
         while(1):
-            print("\nTasks (Standardization)\U0001F447")
+            print("\nTasks")
             for task in self.tasks_standardization:
                 print(task)
 
@@ -91,7 +91,7 @@ class FeatureScaling:
                 try:
                     choice = int(input(("\n\nWhat you want to do? (Press -1 to go back)  ")))
                 except ValueError:
-                    print("Integer Value required. Try again.....")
+                    print("Integer Value required.")
                     continue
                 break
 
@@ -101,7 +101,7 @@ class FeatureScaling:
             # This is the basic approach to perform Standard Scaler on a set of data.
             elif choice == 1:
                 print(self.data.dtypes)
-                columns = input("Enter all the column"+ self.bold_start + "(s)" + self.bold_end + "you want to normalize (Press -1 to go back)  ").lower()
+                columns = input("Enter all the column(s) you want to normalize (Press -1 to go back)  ").lower()
                 if columns == "-1":
                     break
                 for column in columns.split(" "):
@@ -119,21 +119,21 @@ class FeatureScaling:
                     self.data = pd.DataFrame(StandardScaler().fit_transform(self.data))
                     print("Done.......\U0001F601")
                 except:
-                    print("\nString Columns are present. So, " + self.bold_start + "NOT" + self.bold_end + " possible.\U0001F636\nYou can try the first option though.")
+                    print("\nString Columns are present. So, NOT possible.\nYou can try the first option though.")
                 break
 
             elif choice==3:
                 DataDescription.showDataset(self)
 
             else:
-                print("\nYou pressed the wrong key!! Try again..\U0001F974")
+                print("\nYou pressed the wrong key")
 
         return
 
     # main function of the FeatureScaling Class.
     def scaling(self):
         while(1):
-            print("\nTasks (Feature Scaling)\U0001F447")
+            print("\nTasks ")
             for task in self.tasks:
                 print(task)
             
@@ -141,7 +141,7 @@ class FeatureScaling:
                 try:
                     choice = int(input(("\n\nWhat you want to do? (Press -1 to go back)  ")))
                 except ValueError:
-                    print("Integer Value required. Try again.....\U0001F974")
+                    print("Integer Value required. ")
                     continue
                 break
             if choice == -1:
@@ -157,6 +157,6 @@ class FeatureScaling:
                 DataDescription.showDataset(self)
             
             else:
-                print("\nWrong Integer value!! Try again..\U0001F974")
+                print("\nWrong Integer value!! ")
         # Returns all the changes on the DataFrame.
         return self.data

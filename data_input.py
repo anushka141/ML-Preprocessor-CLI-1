@@ -24,21 +24,21 @@ class DataInput:
         try:
             filename, file_extension = path.splitext(sys.argv[1])
             if file_extension == "":
-                raise SystemExit(f"Provide the " + self.bold_start + "DATASET" + self.bold_end +" name (with extension).\U0001F643")
+                raise SystemExit(f"Provide the DATASET name (with extension).")
 
             if file_extension not in self.supported_file_extensions:
-                raise SystemExit(f"This file extension is not " + self.bold_start + "supported.\U0001F643" + self.bold_end)
+                raise SystemExit(f"This file extension is not supported." )
         
         except IndexError:
-            raise SystemExit(f"Provide the " + self.bold_start + "DATASET" + self.bold_end +" name (with extension).\U0001F643")
+            raise SystemExit(f"Provide the DATASET name (with extension).")
         
         try:
             data = pd.read_csv(filename+file_extension)
         except pd.errors.EmptyDataError:
-            raise SystemExit(f"The file is "+ self.bold_start + "EMPTY" + self.bold_end + "\U0001F635")
+            raise SystemExit(f"The file is EMPTY" )
 
         except FileNotFoundError:
-            raise SystemExit(f"File " + self.bold_start + "doesn't" + self.bold_end + " exist\U0001F635")
+            raise SystemExit(f"File doesn't exist")
 
         data = self.change_to_lower_case(data)
 

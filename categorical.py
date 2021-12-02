@@ -29,7 +29,7 @@ class Categorical:
             # The encoding function is only for categorical columns.
             if column in categorical_columns:
                 self.data = pd.get_dummies(data=self.data, columns = [column])
-                print("Encoding is done.......\U0001F601")
+                print("Encoding is done")
                 
                 choice = input("Are there more columns to be encoded?(y/n)  ")
                 if choice == "y" or choice == "Y":
@@ -38,12 +38,12 @@ class Categorical:
                     self.categoricalColumn()
                     break
             else:
-                print("Wrong Column Name. Try Again...\U0001F974")
+                print("Wrong Column Name")
 
     # The main function of the Categorical class.
     def categoricalMain(self):
         while(1):
-            print("\nTasks\U0001F447")
+            print("\nTasks")
             for task in self.tasks:
                 print(task)
 
@@ -51,7 +51,7 @@ class Categorical:
                 try:
                     choice = int(input(("\n\nWhat you want to do? (Press -1 to go back)  ")))
                 except ValueError:
-                    print("Integer Value required. Try again...\U0001F974")
+                    print("Integer Value required")
                     continue
                 break
 
@@ -69,6 +69,6 @@ class Categorical:
                 DataDescription.showDataset(self)
 
             else:
-                print("\nWrong Integer value!! Try again..\U0001F974")
+                print("\nWrong Integer value")
         # return the data after modifying
         return self.data

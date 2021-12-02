@@ -22,7 +22,7 @@ class Imputation:
 
     # function to show columns of the DataFrame
     def showColumns(self):
-        print("\nColumns\U0001F447\n")
+        print("\nColumns\n")
         for column in self.data.columns.values:
             print(column, end = "  ")
         return
@@ -40,7 +40,7 @@ class Imputation:
     def removeColumn(self):
         self.showColumns()
         while(1):
-            columns = input("\nEnter all the column"+ self.bold_start + "(s)" + self.bold_end + "you want to delete (Press -1 to go back)  ").lower()
+            columns = input("\nEnter all the column(s) you want to delete (Press -1 to go back)  ").lower()
 
             if columns == "-1":
                 break
@@ -51,12 +51,12 @@ class Imputation:
                     # inplace = True otherwise, the changes won't reflect on the DataFrame.
                     self.data.drop(columns.split(" "), axis = 1, inplace = True)
                 except KeyError:
-                    print("One or more Columns are not present. Try again.....\U0001F974")
+                    print("One or more Columns are not present")
                     continue
-                print("Done.......\U0001F601")
+                print("Done")
                 break
             else:
-                print("Not Deleting........\U0001F974")
+                print("Not Deleting")
         return
 
     # function that fills null values with the mean of that column.
@@ -71,16 +71,16 @@ class Imputation:
                 try:
                     self.data[column] = self.data[column].fillna(self.data[column].mean())
                 except KeyError:
-                    print("Column is not present. Try again.....\U0001F974")
+                    print("Column is not present")
                     continue
                 except TypeError:
                     # Imputation is only possible on some specific datatypes like int, float etc.
-                    print("The Imputation is not possible here\U0001F974. Try on another column.")
+                    print("The Imputation is not possible here. Try on another column.")
                     continue
-                print("Done......\U0001F601")
+                print("Done")
                 break
             else:
-                print("Not changing........\U0001F974")
+                print("Not changing")
         return
 
 
@@ -96,15 +96,15 @@ class Imputation:
                 try:
                     self.data[column] = self.data[column].fillna(self.data[column].median())
                 except KeyError:
-                    print("Column is not present. Try again.....\U0001F974")
+                    print("Column is not present.")
                     continue
                 except TypeError:
-                    print("The Imputation is not possible here\U0001F974.Try on another column.")
+                    print("The Imputation is not possible here.Try on another column.")
                     continue
-                print("Done......\U0001F601")
+                print("Done")
                 break
             else:
-                print("Not changing........\U0001F974")
+                print("Not changing")
         return
 
     # function that fills null values with the mean of that column.
@@ -123,21 +123,21 @@ class Imputation:
                     # Look into the documentation, if any doubts.
                     self.data[column] = self.data[column].fillna(self.data[column].mode()[0])
                 except KeyError:
-                    print("Column is not present. Try again.....\U0001F974")
+                    print("Column is not present.")
                     continue
                 except TypeError:
-                    print("The Imputation is not possible here\U0001F974. Try on another column.")
+                    print("The Imputation is not possible here. Try on another column.")
                     continue
-                print("Done......\U0001F601")
+                print("Done")
                 break
             else:
-                print("Not changing........\U0001F974")
+                print("Not changing")
         return
 
     # main function of the Imputation Class.
     def imputer(self):
         while(1):
-            print("\nImputation Tasks\U0001F447")
+            print("\nImputation Tasks")
             for task in self.tasks:
                 print(task)
 
@@ -145,7 +145,7 @@ class Imputation:
                 try:
                     choice = int(input(("\nWhat you want to do? (Press -1 to go back)  ")))
                 except ValueError:
-                    print("Integer Value required. Try again.....\U0001F974")
+                    print("Integer Value required.")
                     continue
                 break
 
@@ -171,5 +171,5 @@ class Imputation:
                 DataDescription.showDataset(self)
 
             else:
-                print("\nWrong Integer value!! Try again..\U0001F974")
+                print("\nWrong Integer value")
         return self.data

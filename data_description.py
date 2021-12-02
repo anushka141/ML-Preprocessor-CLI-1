@@ -19,11 +19,11 @@ class DataDescription:
                 if rows == -1:
                     break
                 if rows <= 0:
-                    print("Number of rows given must be +ve...\U0001F974")
+                    print("Number of rows given must be +ve")
                     continue
                 print(self.data.head(rows))
             except ValueError:
-                print("Numeric value is required. Try again....\U0001F974")
+                print("Numeric value is required")
                 continue
             break
         return
@@ -36,7 +36,7 @@ class DataDescription:
     # function to describe the dataset or any specific column.
     def describe(self):
         while(1):
-            print("\nTasks (Data Description)\U0001F447")
+            print("\nTasks")
             for task in self.tasks:
                 print(task)
 
@@ -44,7 +44,7 @@ class DataDescription:
                 try:
                     choice = int(input(("\n\nWhat you want to do? (Press -1 to go back)  ")))
                 except ValueError:
-                    print("Integer Value required. Try again.....\U0001F974")
+                    print("Integer Value required")
                     continue
                 break
 
@@ -59,7 +59,7 @@ class DataDescription:
                         # describe() function is used to tell all the info regarding any specific column.
                         print(self.data[describeColumn].describe())
                     except KeyError:
-                        print("No Column present with this name. Try again....\U0001F974")
+                        print("No Column present with this name")
                         continue
                     break
             
@@ -73,4 +73,4 @@ class DataDescription:
                 self.showDataset()
 
             else:
-                print("\nWrong Integer value!! Try again..\U0001F974")
+                print("\nWrong Integer value")

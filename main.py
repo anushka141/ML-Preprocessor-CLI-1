@@ -23,16 +23,16 @@ class Preprocessor:
     
     def __init__(self):
         self.data = DataInput().inputFunction()
-        print("\n\n" + self.bold_start + "WELCOME TO THE MACHINE LEARNING PREPROCESSOR CLI!!!\N{grinning face}" + self.bold_end + "\n\n")
+        print("\n\n" +"THIS IS MACHINE LEARNING PREPROCESSOR CLI"+ "\n\n")
 
     # function to remove the target column of the DataFrame.
     def removeTargetColumn(self):
-        print("Columns\U0001F447\n")
+        print("Columns in given dataset are- \n")
         for column in self.data.columns.values:
             print(column, end = "  ")
         
         while(1):
-            column = input("\nWhich is the target variable:(Press -1 to exit)  ").lower()
+            column = input("\nChoose the column to be modified:(Press -1 to exit)  ").lower()
             if column == "-1":
                 exit()
             choice = input("Are you sure?(y/n) ")
@@ -40,12 +40,12 @@ class Preprocessor:
                 try:
                     self.data.drop([column], axis = 1, inplace = True)
                 except KeyError:
-                    print("No column present with this name. Try again......\U0001F974")
+                    print("Wrong choice")
                     continue
-                print("Done.......\U0001F601")
+                print("Done")
                 break
             else:
-                print("Try again with the correct column name...\U0001F974")
+                print("Try again with the correct column name")
         return
     
     def printData(self):
@@ -55,15 +55,15 @@ class Preprocessor:
     def preprocessorMain(self):
         self.removeTargetColumn()
         while(1):
-            print("\nTasks (Preprocessing)\U0001F447\n")
+            print("\nTasks\n")
             for task in self.tasks:
                 print(task)
 
             while(1):
                 try:
-                    choice = int(input("\nWhat do you want to do? (Press -1 to exit):  "))
+                    choice = int(input("\nChoose the task you want to perform (Press -1 to exit):  "))
                 except ValueError:
-                    print("Integer Value required. Try again.....\U0001F974")
+                    print("Enter an Integer")
                     continue
                 break
 
@@ -95,7 +95,7 @@ class Preprocessor:
                 Download(self.data).download()
             
             else:
-                print("\nWrong Integer value!! Try again..\U0001F974")
+                print("\nEnter correct Interger")
 
 # obj is the object of our Preprocessor class(main class).
 obj = Preprocessor()
